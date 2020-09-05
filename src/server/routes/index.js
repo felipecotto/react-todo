@@ -11,12 +11,12 @@ function Routes() {
     return (
         <Router>
             <Switch>
-                <Route path="/">
+                <Route path="/" exact>
                     <TodoList />
                 </Route>
 
                 <Route path="/users/:userId">
-                    <UserTodoList />
+                    <UserTodoList/>
                 </Route>
             </Switch>
         </Router>
