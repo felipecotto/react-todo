@@ -1,13 +1,25 @@
-import React from "react";
-import { Container, Row, Col } from 'react-bootstrap';
-import Card from '../../components/card'; 
+import React, {useEffect, useState} from "react";
+import {
+  useParams
+} from "react-router-dom";
+import {Layout} from '../../modules/layout'
+import {UserService} from '../../server/services/userTodoList-service'
 
+export default function TodoList(props) {
+  // let { userId } = useParams();
+  const [oi, setoi] = useState();
 
-export default function UserTodoList(props) {
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await UserService()
+      setoi(res)
+    };
+    fetchData()
+  })
     return (
-      <Container>
-        {console.log()}
-      </Container>
+      <Layout>
+        {console.log(oi)}
+      </Layout>
     );
   }
   
