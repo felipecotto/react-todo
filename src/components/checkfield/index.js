@@ -1,11 +1,12 @@
 import React from "react"
+import { Form } from 'react-bootstrap';
 
 import * as S from "./styled"
 
 const Checkfield = () => (
-    <S.CardBg>
-        Card
-    </S.CardBg>
+    <Form.Group controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" />
+    </Form.Group>
 )
 
 export default Checkfield
