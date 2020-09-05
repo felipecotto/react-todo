@@ -1,8 +1,8 @@
-import React from 'react'
+import { createContext } from 'react';
 
-const TodoContext = React.createContext()
+const TodoContext = createContext({
+    showDrawer: false,
+    toggleCheckoutDrawer: () => {},
+  });
 
-export const TodoProvider = TodoContext.Provider
-export const TodoConsumer = TodoContext.Consumer
-
-export default TodoContext
+export default TodoContext;

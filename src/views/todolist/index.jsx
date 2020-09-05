@@ -1,15 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {TodoListService} from '../../server/services/todoList-service'
-import { TodoProvider } from '../../modules/todolist/contextTodo'
-import { Container, Row, Col } from 'react-bootstrap';
-import * as S from "./styled"
+import TodoContext from '../../modules/todolist/contextTodo'
 import {Layout} from '../../modules/layout'
-import Card from '../../components/card'; 
-import InputSearch from '../../components/input-search'; 
+import TodoListModule from '../../modules/todolist'
 
 
 export default function TodoList() {
-  // let { userId } = useParams();
     const [cards, setCards] = useState();
 
     useEffect(() => {
@@ -21,20 +17,9 @@ export default function TodoList() {
     
     return (
       <Layout>
-        <TodoProvider todolist = {cards}>
-          <S.SectionMain>
-            <Container> 
-              <S.TitleMain>Controle <br/> Suas Tarefas</S.TitleMain>
-              <InputSearch/>
-                {console.log(cards)}
-              <Row>
-                <Col><Card/></Col>
-                <Col><Card/></Col>
-                <Col><Card/></Col>
-              </Row>
-            </Container>
-          </S.SectionMain>
-        </TodoProvider>
+        <TodoContext.Provider value={{todo: cards}}>
+          <TodoListModule/>
+        </TodoContext.Provider>
       </Layout>
     );
   }
