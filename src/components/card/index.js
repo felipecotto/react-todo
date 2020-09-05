@@ -4,7 +4,7 @@ import * as S from "./styled"
 
 const Card = () => (
     <S.CardBg>
-        Card
+        <S.CardTitle>Titulo Card</S.CardTitle>
     </S.CardBg>
 )
 
