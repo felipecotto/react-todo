@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from 'react-bootstrap';
-import MainTitle from '../../components/title';
+import MainTitle from '../../components/maintitle';
 import styled from "styled-components";
 
 const BoxStyled = styled.section`
@@ -23,7 +23,7 @@ export const Layout = ({ children }) => (
     <BoxStyled>
         <ContainerStyled fluid>
             <Content>
-            <MainTitle></MainTitle>
+            <MainTitle>Gerenciador de Tarefas</MainTitle>
                 {children}
             </Content>
         </ContainerStyled>

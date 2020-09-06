@@ -9,8 +9,8 @@ import styled from "styled-components"
     font-weight: 700;
 `
 
-const MainTitle = ({data}) => (
-    <MainTitleStyle>Gerenciador de Tarefas</MainTitleStyle>
+const MainTitle = ({ children }) => (
+    <MainTitleStyle>{children}</MainTitleStyle>
 )
 
 export default MainTitle

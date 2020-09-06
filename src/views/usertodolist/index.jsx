@@ -7,6 +7,7 @@ import {TodoListService} from '../../server/services/todoList-service'
 import TodoContext from '../../modules/todolist/contextTodo'
 import {Layout} from '../../modules/layout'
 import TodoListModule from '../../modules/todolist'
+import UserTitle from '../../components/usertitle'
 
 
 export default function TodoList() {
@@ -35,7 +36,7 @@ export default function TodoList() {
           searchData,
           setSearch 
         }}>
-            <h3>Usuário {userId}</h3>
+            <UserTitle>Usuario: </UserTitle>
             <InputSearch/>
           <TodoListModule/>
         </TodoContext.Provider>
