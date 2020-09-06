@@ -33,10 +33,10 @@ export default function TodoListModule() {
             <TodolistContant>
                 <Row>
                     <Col>
-                        {dataList.cardDone && dataList.cardDone.map((item)=><Card key={item.id} data={item}/>)}
+                        {dataList.cardTodo && dataList.cardTodo.map((item)=><Card key={item.id} data={item}/>)}
                     </Col>
                     <Col>
-                        {dataList.cardTodo && dataList.cardTodo.map((item)=><Card key={item.id} data={item}/>)}
+                        {dataList.cardDone && dataList.cardDone.map((item)=><Card key={item.id} data={item}/>)}
                     </Col>
                 </Row>
             </TodolistContant>
