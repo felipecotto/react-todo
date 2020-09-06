@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import * as S from "./styled"
 import Card from '../../components/card'; 
 import InputSearch from '../../components/input-search'; 
+import TodoListItem from "../todolistitem";
 
 
 export default function TodoListModule() {
@@ -19,6 +20,7 @@ export default function TodoListModule() {
                 <Col><Card/></Col>
                 <Col><Card/></Col>
             </Row>
+            <TodoListItem/>
         </Container>
         </S.SectionMain>
     );
