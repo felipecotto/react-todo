@@ -24,7 +24,7 @@ export default function TodoList() {
         setcardDone(res.filter((item)=>item.completed && parseInt(item.userId) === parseInt(userId)))
         setcardTodo(res.filter((item)=>!item.completed && parseInt(item.userId) === parseInt(userId) ))
       })()
-    }, [])
+    }, [userId])
     
     return (
       <Layout>
