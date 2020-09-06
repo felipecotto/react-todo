@@ -8,7 +8,6 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 const Todolist = styled.section`
-    height: 100vh;
     background: rgba(255,255,255,0.3)
 `;
 const TodolistTitle = styled.section`

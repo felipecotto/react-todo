@@ -6,7 +6,7 @@ const BoxStyled = styled.section`
     padding: 0 20px;
     background: rgb(139,150,207);
     background: radial-gradient(circle, rgba(139,150,207,1) 0%, rgba(255,170,187,1) 100%);  
-    height: 100vh
+    height: 100%
 `;
 
 const Content = styled.section`
