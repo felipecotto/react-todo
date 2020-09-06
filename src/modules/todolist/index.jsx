@@ -22,12 +22,10 @@ const TodolistContant = styled.section`
     text-align: center;
 `;
 export default function TodoListModule() {
-    const {cardTodo,cardDone, searchData}  = useContext(TodoContext); 
+    const {cardTodo,cardDone, searchData, userData}  = useContext(TodoContext); 
     const[todo, setTodo] = useState(cardTodo)
     const[done, setDone] = useState(cardDone)
-
     useEffect(()=>{
-        console.log(searchData)
         if(searchData) {
             setTodo(cardTodo.filter((item)=>{
                 return item.title.search(searchData)>=0
@@ -52,10 +50,15 @@ export default function TodoListModule() {
             <TodolistContant>
                 <Row>
                     <Col>
-                        {cardTodo && (todo && todo !==''?todo:cardTodo).map((item)=><Card key={item.id} data={item}/>)}
+                        {userData && cardTodo && (todo && todo !==''?todo:cardTodo).map((item)=> {
+                            return <Card key={item.id} data={item} user={userData[1]}/>
+                        })}
                     </Col>
                     <Col>
-                        {cardDone && (done && done !==''?todo:cardDone).map((item)=><Card key={item.id} data={item}/>)}
+                        {userData && cardDone && (done && done !==''?todo:cardDone).map((item)=> {
+
+                            return <Card key={item.id} data={item} user={userData[1]}/>
+                        })}
                     </Col>
                 </Row>
             </TodolistContant>

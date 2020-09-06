@@ -41,9 +41,9 @@ const Person = styled.figure`
     }
 `
 
-const Card = ({data}) => {
+const Card = ({data, user}) => {
     const renderTooltip = props => (
-    <Tooltip {...props}>Usuário {data.userId}</Tooltip>
+    <Tooltip {...props}>Usuário {user.name}</Tooltip>
       );
     const url = `/users/${data.userId}`
     return(<CardBg>
