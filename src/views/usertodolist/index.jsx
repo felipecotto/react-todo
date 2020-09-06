@@ -1,21 +1,44 @@
-import React, {useEffect} from "react";
-// import {
-//   useParams
-// } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {
+  useParams
+} from "react-router-dom";
+import InputSearch from '../../components/input-search'; 
+import {TodoListService} from '../../server/services/todoList-service'
+import TodoContext from '../../modules/todolist/contextTodo'
 import {Layout} from '../../modules/layout'
-// import {UserService} from '../../server/services/userTodoList-service'
+import TodoListModule from '../../modules/todolist'
 
-export default function TodoList(props) {
-  // let { userId } = useParams();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      // const res = await UserService()
-    };
-    fetchData()
-  })
+export default function TodoList() {
+
+  let { userId } = useParams();
+  console.log(userId)
+    const [cardDone, setcardDone] = useState();
+    const [cardTodo, setcardTodo] = useState();
+    const [searchData, setSearch] = useState();
+
+    useEffect(() => {
+      (async () => {
+        const res = await TodoListService()
+        setcardDone(res.filter((item)=>item.completed && parseInt(item.userId) === parseInt(userId)))
+        setcardTodo(res.filter((item)=>!item.completed && parseInt(item.userId) === parseInt(userId) ))
+      })()
+    }, [])
+    
     return (
       <Layout>
+        <TodoContext.Provider value={{
+          cardDone,
+          setcardDone,
+          cardTodo,
+          setcardTodo,
+          searchData,
+          setSearch 
+        }}>
+            <h3>Usuário {userId}</h3>
+            <InputSearch/>
+          <TodoListModule/>
+        </TodoContext.Provider>
       </Layout>
     );
   }
