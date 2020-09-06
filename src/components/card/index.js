@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from 'react-router-dom';
 import Checkfield from "../checkfield"; 
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
@@ -33,6 +34,7 @@ const Person = styled.figure`
     position: absolute;
     right: 15px;
     top: 22px;
+    cursor: pointer;
     svg {
         color: #462056;
         font-size: 25px;
@@ -41,17 +43,20 @@ const Person = styled.figure`
 
 const Card = ({data}) => {
     const renderTooltip = props => (
-        <Tooltip {...props}>Tooltip for the register button</Tooltip>
+    <Tooltip {...props}>Usuário {data.userId}</Tooltip>
       );
+    const url = `/users/${data.userId}`
     return(<CardBg>
         <CardList>
             <Checkfield checked = {data?.completed}/>   
             <CardTitle>{data?.title}</CardTitle>
-            <OverlayTrigger placement="top" overlay={renderTooltip}>
                 <Person >
-                    <BsPersonSquare/>
+                    <OverlayTrigger placement="top" overlay={renderTooltip}>
+                        <Link to= {url}>
+                                <BsPersonSquare/>
+                        </Link>
+                    </OverlayTrigger>
                 </Person>
-            </OverlayTrigger>
         </CardList>
     </CardBg>)
 }
