@@ -15,13 +15,8 @@ export default function TodoList() {
     useEffect(() => {
       (async () => {
         const res = await TodoListService()
-        res.map((item) => {
-          if(item.completed) {
-            return setcardTodo({...cardTodo, item})
-          }
-          console.log( 'ßßentrou')
-          return setcardDone(item)
-        })
+        setcardDone(res.filter((item)=>item.completed))
+        setcardTodo(res.filter((item)=>!item.completed))
       })()
     }, [])
     

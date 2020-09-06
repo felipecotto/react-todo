@@ -22,7 +22,6 @@ const TodolistContant = styled.section`
 `;
 export default function TodoListModule() {
     const dataList  = useContext(TodoContext); 
-    console.log(dataList)
     return (
         <Todolist>
             <TodolistTitle>
@@ -34,9 +33,11 @@ export default function TodoListModule() {
             <TodolistContant>
                 <Row>
                     <Col>
-                        
+                        {dataList.cardDone && dataList.cardDone.map((item)=><Card key={item.id} data={item}/>)}
                     </Col>
-                    <Col><Card/></Col>
+                    <Col>
+                        {dataList.cardTodo && dataList.cardTodo.map((item)=><Card key={item.id} data={item}/>)}
+                    </Col>
                 </Row>
             </TodolistContant>
         </Todolist>

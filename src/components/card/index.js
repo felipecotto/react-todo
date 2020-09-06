@@ -3,11 +3,11 @@ import Checkfield from "../checkfield";
 
 import * as S from "./styled"
 
-const Card = () => (
+const Card = ({data}) => (
     <S.CardBg>
         <S.CardList>
             <Checkfield />
-            <S.CardTitle>Tarefa Lorem Ipsum </S.CardTitle>
+            <S.CardTitle>{data?.title}</S.CardTitle>
         </S.CardList>
     </S.CardBg>
 )
