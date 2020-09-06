@@ -11,6 +11,7 @@ import TodoListModule from '../../modules/todolist'
 export default function TodoList() {
     const [cardDone, setcardDone] = useState();
     const [cardTodo, setcardTodo] = useState();
+    const [searchData, setSearch] = useState();
 
     useEffect(() => {
       (async () => {
@@ -26,7 +27,9 @@ export default function TodoList() {
           cardDone,
           setcardDone,
           cardTodo,
-          setcardTodo
+          setcardTodo,
+          searchData,
+          setSearch 
         }}>
           {/* <TitleMain>Controle <br/> Suas Tarefas</TitleMain> */}
             <InputSearch/>

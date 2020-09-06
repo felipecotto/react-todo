@@ -10,7 +10,7 @@ const CardBg = styled.div`
  const CardTitle = styled.h3`
     margin-left: 20px;      
     font-family: 'Montserrat', sans-serif;
-    font-size: 18px; 
+    font-size: 15   px; 
     font-weight: 600;
 `
 
