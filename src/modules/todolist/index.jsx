@@ -1,26 +1,45 @@
-import React  from "react";
-// import {TodoConsumer} from '../../modules/todolist/contextTodo'
+import React, { useContext } from 'react';
+import TodoContext from '../../modules/todolist/contextTodo'
+import styled from "styled-components";
 
-import { Container, Row, Col } from 'react-bootstrap';
-import * as S from "./styled"
+import { Row, Col } from 'react-bootstrap';
 import Card from '../../components/card'; 
-import InputSearch from '../../components/input-search'; 
 
-
+const Todolist = styled.section`
+    height: 100vh;
+    background: rgba(255,255,255,0.3)
+`;
+const TodolistTitle = styled.section`
+    background: #462056;
+    padding: 15px 0;
+    color: #ffffff;
+    text-align: center;
+`;
+const TodolistContant = styled.section`
+    padding: 15px;
+    color: #ffffff;
+    text-align: center;
+`;
 export default function TodoListModule() {
-    
+    const dataList  = useContext(TodoContext); 
+    console.log(dataList)
     return (
-        <S.SectionMain>
-        <Container> 
-            <S.TitleMain>Controle <br/> Suas Tarefas</S.TitleMain>
-            <InputSearch/>
-            <Row>
-                <Col><Card/></Col>
-                <Col><Card/></Col>
-                <Col><Card/></Col>
-            </Row>
-        </Container>
-        </S.SectionMain>
+        <Todolist>
+            <TodolistTitle>
+                <Row>
+                    <Col>TODO</Col>
+                    <Col>DONE</Col>
+                </Row>
+            </TodolistTitle>
+            <TodolistContant>
+                <Row>
+                    <Col>
+                        
+                    </Col>
+                    <Col><Card/></Col>
+                </Row>
+            </TodolistContant>
+        </Todolist>
     );
   }
   

@@ -1,8 +1,6 @@
 import React from "react"
 import { InputGroup, FormControl, Button } from 'react-bootstrap';
 
-import * as S from "./styled"
-
 const InputSearch = () => (
     <InputGroup className="mb-3">
     <FormControl
