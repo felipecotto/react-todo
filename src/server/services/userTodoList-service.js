@@ -1,5 +1,5 @@
-export const UserService = async () => {
-    const result = await fetch('https://jsonplaceholder.typicode.com/todos')
+export const UserService = async (userId) => {
+    const result = await fetch(`https://jsonplaceholder.typicode.com/user/${userId}/todos`)
     const data = await result.json()
     return data;
 }

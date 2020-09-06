@@ -3,7 +3,7 @@ import {
   useParams
 } from "react-router-dom";
 import InputSearch from '../../components/input-search'; 
-import {TodoListService} from '../../server/services/todoList-service'
+import {UserService} from '../../server/services/userTodoList-service'
 import TodoContext from '../../modules/todolist/contextTodo'
 import {Layout} from '../../modules/layout'
 import TodoListModule from '../../modules/todolist'
@@ -13,16 +13,15 @@ import UserTitle from '../../components/usertitle'
 export default function TodoList() {
 
   let { userId } = useParams();
-  console.log(userId)
     const [cardDone, setcardDone] = useState();
     const [cardTodo, setcardTodo] = useState();
     const [searchData, setSearch] = useState();
 
     useEffect(() => {
       (async () => {
-        const res = await TodoListService()
-        setcardDone(res.filter((item)=>item.completed && parseInt(item.userId) === parseInt(userId)))
-        setcardTodo(res.filter((item)=>!item.completed && parseInt(item.userId) === parseInt(userId) ))
+        const res = await UserService(userId )
+        setcardDone(res.filter((item)=>item.completed ))
+        setcardTodo(res.filter((item)=>!item.completed  ))
       })()
     }, [userId])
     

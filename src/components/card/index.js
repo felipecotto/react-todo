@@ -53,7 +53,7 @@ const Card = ({data}) => {
                 <Person >
                     <OverlayTrigger placement="top" overlay={renderTooltip}>
                         <Link to= {url}>
-                                <BsPersonSquare/>
+                            <BsPersonSquare/>
                         </Link>
                     </OverlayTrigger>
                 </Person>
