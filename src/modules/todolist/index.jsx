@@ -50,15 +50,10 @@ export default function TodoListModule() {
             <TodolistContant>
                 <Row>
                     <Col>
-                        {userData && cardTodo && (todo && todo !==''?todo:cardTodo).map((item)=> {
-                            return <Card key={item.id} data={item} user={userData[item.userId]}/>
-                        })}
+                        {userData && cardTodo && (todo && todo !==''?todo:cardTodo).map((item)=> (<Card key={item.id} data={item} user={userData[item.userId]}/>))}
                     </Col>
                     <Col>
-                        {userData && cardDone && (done && done !==''?todo:cardDone).map((item)=> {
-
-                            return <Card key={item.id} data={item} user={userData[item.userId]}/>
-                        })}
+                        {userData && cardDone && (done && done !==''?todo:cardDone).map((item)=> (<Card key={item.id} data={item} user={userData[item.userId]}/>))}
                     </Col>
                 </Row>
             </TodolistContant>

@@ -4,7 +4,7 @@ import Checkfield from "../checkfield";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
-import styled from "styled-components"
+import styled, {css} from "styled-components"
 import { BsPersonSquare } from 'react-icons/bs';
 
 
@@ -21,14 +21,14 @@ const CardBg = styled.div`
     text-align: left;
 `
 
-const CardList = styled.div`
+const CardList = styled.section`
   display: flex; 
   align-items: center;
-  background-color: #ffffff;
   padding: 12px;
   margin-bottom: 12px; 
   min-height: 70px;
   color: #333;
+  background-color: ${props => props.checked === true ? "#caffcd;" : "#ffffff"};
 `
 const Person = styled.figure`
     position: absolute;
@@ -40,6 +40,10 @@ const Person = styled.figure`
         font-size: 25px;
     }
 `
+const CardButton = styled.div`
+    display: flex;
+`
+
 
 const Card = ({data, user}) => {
     const renderTooltip = props => (
@@ -47,16 +51,16 @@ const Card = ({data, user}) => {
       );
     const url = `/users/${data.userId}`
     return(<CardBg>
-        <CardList>
+        <CardList  checked={data?.completed}>
             <Checkfield checked = {data?.completed}/>   
             <CardTitle>{data?.title}</CardTitle>
-                <Person >
-                    <OverlayTrigger placement="top" overlay={renderTooltip}>
-                        <Link to= {url}>
-                            <BsPersonSquare/>
-                        </Link>
-                    </OverlayTrigger>
-                </Person>
+            <Person >
+                <OverlayTrigger placement="top" overlay={renderTooltip}>
+                    <Link to= {url}>
+                        <BsPersonSquare/>
+                    </Link>
+                </OverlayTrigger>
+            </Person>
         </CardList>
     </CardBg>)
 }

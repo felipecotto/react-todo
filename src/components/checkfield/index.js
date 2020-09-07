@@ -38,13 +38,9 @@ const IconCheck = styled(FaCheck)`
     font-size: 14px;
 `
 
-
-
-
-
 const Checkfield = ({checked}) => (
     <>
-        <StyledCheck type="checkbox"  checked={checked}/>
+        <StyledCheck type="checkbox"  checked={checked} />
         <label><IconCheck /></label>
     </>
 )
