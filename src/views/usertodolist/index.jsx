@@ -37,9 +37,7 @@ export default function TodoList() {
       <Layout>
         <TodoContext.Provider value={{
           cardDone,
-          setcardDone,
           cardTodo,
-          setcardTodo,
           searchData,
           setSearch ,
           userData  

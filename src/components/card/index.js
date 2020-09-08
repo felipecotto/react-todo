@@ -45,14 +45,14 @@ const CardButton = styled.div`
 `
 
 
-const Card = ({data, user}) => {
+const Card = ({data, user, handleStateCard}) => {
     const renderTooltip = props => (
     <Tooltip {...props}>Usuário {user.name}</Tooltip>
       );
     const url = `/users/${data.userId}`
     return(<CardBg>
         <CardList  checked={data?.completed}>
-            <Checkfield checked = {data?.completed}/>   
+            <Checkfield checked = {data?.completed} handleStateCard={handleStateCard}/>   
             <CardTitle>{data?.title}</CardTitle>
             <Person >
                 <OverlayTrigger placement="top" overlay={renderTooltip}>

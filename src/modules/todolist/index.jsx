@@ -22,7 +22,7 @@ const TodolistContant = styled.section`
     text-align: center;
 `;
 export default function TodoListModule() {
-    const {cardTodo,cardDone, searchData, userData}  = useContext(TodoContext); 
+    const { cardTodo, cardDone, searchData, userData, setTasks, tasks}  = useContext(TodoContext); 
     const[todo, setTodo] = useState(cardTodo)
     const[done, setDone] = useState(cardDone)
     useEffect(()=>{
@@ -38,6 +38,32 @@ export default function TodoListModule() {
             setDone(null)
         }
     },[cardDone, cardTodo, searchData])
+    
+    function handleStateCard(id){
+        const newTask = tasks.map(item=>{
+            if(item.id === id) {
+                item.completed =  !item.completed
+            }
+           return item
+        })
+        setTasks(newTask)
+    }
+
+    function cardGenerate(tasks, insideList){
+        return (
+            userData &&
+            tasks && 
+            (insideList? insideList : tasks)
+            .map((item, id)=> (
+                <Card 
+                    key={id}
+                    data={item}
+                    user={userData[item.userId]}
+                    handleStateCard={()=>handleStateCard(item.id)}
+                />
+            ))
+        )
+    }
 
     return (
         <Todolist>
@@ -50,10 +76,10 @@ export default function TodoListModule() {
             <TodolistContant>
                 <Row>
                     <Col>
-                        {userData && cardTodo && (todo && todo !==''?todo:cardTodo).map((item)=> (<Card key={item.id} data={item} user={userData[item.userId]}/>))}
+                        {cardGenerate(cardTodo, todo)}
                     </Col>
                     <Col>
-                        {userData && cardDone && (done && done !==''?todo:cardDone).map((item)=> (<Card key={item.id} data={item} user={userData[item.userId]}/>))}
+                        {cardGenerate(cardDone, done)}
                     </Col>
                 </Row>
             </TodolistContant>

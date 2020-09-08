@@ -8,6 +8,7 @@ import TodoListModule from '../../modules/todolist'
 
 
 export default function TodoList() {
+    const [tasks, setTasks] = useState();
     const [cardDone, setcardDone] = useState();
     const [cardTodo, setcardTodo] = useState();
     const [searchData, setSearch] = useState();
@@ -16,30 +17,35 @@ export default function TodoList() {
     useEffect(() => {
       (async () => {
         const items = await TodoListService()
-        setcardDone(items.filter((item)=>item.completed))
-        setcardTodo(items.filter((item)=>!item.completed))
+        setTasks(items)
       })()
     }, [])
+
+    useEffect(() => {
+      console.log(tasks)
+      tasks && setcardDone(tasks.filter((item)=>item.completed))
+      tasks && setcardTodo(tasks.filter((item)=>!item.completed))
+    }, [tasks])
     
     useEffect(() => {
       (async () => {
         const user = await UserPerfilService();
         setSuserData(InversedDataUsers(user))
       })()
-    }, [])
+    }, [tasks])
     
     return (
       <Layout>
         <TodoContext.Provider value={{
           cardDone,
-          setcardDone,
           cardTodo,
-          setcardTodo,
           searchData,
           setSearch,
-          userData  
+          userData, 
+          setTasks,
+          tasks  
         }}>
-            <InputSearch/>
+          <InputSearch/>
           <TodoListModule/>
         </TodoContext.Provider>
       </Layout>

@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import styled from "styled-components"
 
 import { FaCheck } from 'react-icons/fa';
@@ -15,7 +15,7 @@ const StyledCheck = styled.input`
         display: inline-block;
         position: relative;
     }
-    &+ label * {
+    &+ label svg {
         display:none;
     }
     & + label:active, .regular-checkbox:checked + label:active {
@@ -26,7 +26,7 @@ const StyledCheck = styled.input`
         box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
         color: #99a1a7;
     }
-    &:checked + label * {
+    &:checked + label svg{
         display: block
     }
 `
@@ -38,11 +38,12 @@ const IconCheck = styled(FaCheck)`
     font-size: 14px;
 `
 
-const Checkfield = ({checked}) => (
-    <>
-        <StyledCheck type="checkbox"  checked={checked} />
-        <label><IconCheck /></label>
-    </>
-)
+const Checkfield = ({checked, handleStateCard}) => {
+    const [insideState, setInsideState] = useState(checked)
+    return (<>
+        <StyledCheck type="checkbox"  checked={insideState} onChange={()=>setInsideState(checked)}/>
+        <label checked={insideState} onClick={()=>handleStateCard()}><IconCheck /></label>
+    </>)
+}
 
 export default Checkfield
