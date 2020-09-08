@@ -13,25 +13,29 @@ import UserTitle from '../../components/usertitle'
 export default function TodoList() {
 
   let { userId } = useParams();
+    const [tasks, setTasks] = useState();
     const [cardDone, setcardDone] = useState();
     const [cardTodo, setcardTodo] = useState();
     const [searchData, setSearch] = useState();
-    const [userData, setUserData] = useState();
-
+    const [userData, setSuserData] = useState();
     useEffect(() => {
       (async () => {
-        const res = await UserService(userId )
-        setcardDone(res.filter((item)=>item.completed ))
-        setcardTodo(res.filter((item)=>!item.completed  ))
+        const items = await UserService(userId )
+        setTasks(items)
       })()
     }, [userId])
+    useEffect(() => {
+      console.log(tasks)
+      tasks && setcardDone(tasks.filter((item)=>item.completed))
+      tasks && setcardTodo(tasks.filter((item)=>!item.completed))
+    }, [tasks])
     
     useEffect(() => {
       (async () => {
         const user = await UserPerfilService();
-        setUserData(InversedDataUsers(user))
+        setSuserData(InversedDataUsers(user))
       })()
-    }, [userId])
+    }, [tasks])
     
     return (
       <Layout>
@@ -39,8 +43,10 @@ export default function TodoList() {
           cardDone,
           cardTodo,
           searchData,
-          setSearch ,
-          userData  
+          setSearch,
+          userData, 
+          setTasks,
+          tasks  
         }}>
             <UserTitle>Olá  {userData && userData[userId].name} </UserTitle>
             <InputSearch/>
